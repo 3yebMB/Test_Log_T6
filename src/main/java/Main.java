@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
@@ -8,21 +7,23 @@ public class Main {
         System.out.println("Обработанный массив : " + Arrays.asList(backArrAfterLastFour(orig_arr)));
     }
 
-    public static <T extends Number> T[] backArrAfterLastFour(T[] arr) throws MyException {
-        T[] result = null;
-        ArrayList<T> alist = new ArrayList<T>();
+    public static <T extends Number> T[] backArrAfterLastFour(final T[] arr) throws MyException {
+        T[] result = null;// = (T[]) new Number[arr.length];
 
-        for (int i = arr.length; i > 0 ; i--) {
-            if (arr[i].equals(4)) break;
-//            else result[arr.length-i]
+        for (int i = arr.length-1; i > 0 ; i--) {
+            if (arr[i].equals(4)) {
+                result = (T[]) new Number[arr.length-i-1];
+                System.arraycopy(arr, i+1, result, 0, arr.length-i-1);
+                break;
+            }
         }
 
-        result = arr;
+        if (result==null) throw new MyException("В исходном массиве не встретилось ни одной 4-ки!");
 
         return result;
     }
 
-    class MyException extends RuntimeException {
+    static class MyException extends RuntimeException {
         public MyException(String message) {
             super(message);
         }
