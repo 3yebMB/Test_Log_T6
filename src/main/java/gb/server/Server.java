@@ -10,7 +10,7 @@ import java.util.Vector;
 
 public class Server {
     private Vector<ClientHandler> clients;
-    private final Logger logger = Logger.getLogger("");
+    private final Logger file = Logger.getLogger("file");
 
     public Server() throws SQLException {
         clients = new Vector<>();
@@ -20,9 +20,11 @@ public class Server {
             AuthService.connect();
             server = new ServerSocket(8189);
             System.out.println("Сервер запущен. Ожидаем клиентов...");
+            file.info("Сервер запущен. Ожидаем клиентов...");
             while (true) {
                 socket = server.accept();
                 System.out.println("Клиент подключился");
+                file.info("Клиент подключился");
                 new ClientHandler(this, socket);
                // clients.add(new ClientHandler(this, socket));
             }
