@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Main {
+public class Ex2 {
     public static void main(String[] args) {
         Integer[] orig_arr = {1, 2, 4, 4, 2, 3, 4, 1, 7};
         System.out.println("Исходный массив : " + Arrays.asList(orig_arr));
