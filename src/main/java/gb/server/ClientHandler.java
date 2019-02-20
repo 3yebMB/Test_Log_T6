@@ -1,5 +1,22 @@
 package gb.server;
 
+/*
+
+        LEVEL	WEIGHT
+        OFF	0
+        FATAL	100
+        ERROR	200
+        WARN	300
+        INFO	400
+        DEBUG	500
+        TRACE	600
+        ALL	Integer.MAX_VALUE
+
+*/
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -11,6 +28,8 @@ public class ClientHandler {
     private DataOutputStream out;
     private DataInputStream in;
     private String nick;
+
+//    private final Logger logger = (Logger) LogManager.getRootLogger(ClientHandler.class);
 
     public ClientHandler(Server server, Socket socket) {
         try {
